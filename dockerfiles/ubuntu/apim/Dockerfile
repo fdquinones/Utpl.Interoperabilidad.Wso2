@@ -85,7 +85,7 @@ ARG WSO2_SERVER_VERSION=4.2.0
 ARG WSO2_SERVER_REPOSITORY=product-apim
 ARG WSO2_SERVER=${WSO2_SERVER_NAME}-${WSO2_SERVER_VERSION}
 ARG WSO2_SERVER_HOME=${USER_HOME}/${WSO2_SERVER}
-ARG WSO2_SERVER_DIST_URL=<APIM_DIST_URL>
+ARG WSO2_SERVER_DIST_URL=https://product-dist.wso2.com/products/api-manager/4.2.0/wso2am-4.2.0.zip
 # build argument for MOTD
 ARG MOTD="\n\
 Welcome to WSO2 Docker resources.\n\
