@@ -85,7 +85,7 @@ ARG WSO2_SERVER_VERSION=4.2.0
 ARG WSO2_SERVER_REPOSITORY=product-apim
 ARG WSO2_SERVER=${WSO2_SERVER_NAME}-${WSO2_SERVER_VERSION}
 ARG WSO2_SERVER_HOME=${USER_HOME}/${WSO2_SERVER}
-ARG WSO2_SERVER_DIST_URL=https://product-dist.wso2.com/products/api-manager/4.2.0/wso2am-4.2.0.zip
+ARG WSO2_SERVER_DIST_URL=C:\Users\\fdquinones\\Documents\\Projects\\Casa-Felipe\\Utpl.Interoperabilidad.Wso2\\dockerfiles\\ubuntu\\apim\\wso2am-4.2.0.zip
 # build argument for MOTD
 ARG MOTD="\n\
 Welcome to WSO2 Docker resources.\n\
@@ -103,10 +103,15 @@ RUN \
 # copy init script to user home
 COPY --chown=wso2carbon:wso2 docker-entrypoint.sh ${USER_HOME}/
 
+COPY --chown=wso2carbon:wso2 wso2am-4.2.0.zip wso2am-4.2.0.zip
+
+#listar archivos
+
+RUN ls
+RUN pwd
 # add the WSO2 product distribution to user's home directory
 RUN \
-    wget -O ${WSO2_SERVER}.zip "${WSO2_SERVER_DIST_URL}" \
-    && unzip -d ${USER_HOME} ${WSO2_SERVER}.zip \
+    unzip -d ${USER_HOME} ${WSO2_SERVER}.zip \
     && chown wso2carbon:wso2 -R ${WSO2_SERVER_HOME} \
     && mkdir ${USER_HOME}/wso2-tmp \
     && bash -c 'mkdir -p ${USER_HOME}/solr/{indexed-data,database}' \
